@@ -28,6 +28,8 @@ What's different from AddressBook-Level1:
 * Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`) 
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
 
+### Commands are not case sensitive thus `add` and `Add` will both work to add a new person.
+
 ### Viewing help : `help`
 Format: `help`
 
