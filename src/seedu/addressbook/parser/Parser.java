@@ -101,7 +101,7 @@ public class Parser {
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
-            return new HelpCommand(arguments);
+            return new HelpCommand();
         }
     }
 
