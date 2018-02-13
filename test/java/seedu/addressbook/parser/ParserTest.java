@@ -66,35 +66,42 @@ public class ParserTest {
 
     @Test
     public void parse_helpCommand_parsedCorrectly() {
-        final String input = "help";
-        parseAndAssertCommandType(input, HelpCommand.class);
+        final String[] inputs = {"help", "Help","HELP", "HelP"} ;
+        for(String input : inputs){
+            System.out.println(input);
+            parseAndAssertCommandType(input, HelpCommand.class);
+        }
+
     }
 
     @Test
     public void parse_clearCommand_parsedCorrectly() {
-        final String input = "clear";
-        parseAndAssertCommandType(input, ClearCommand.class);
+        final String[] inputs = {"clear", "Clear"};
+        for(String input: inputs) {
+            parseAndAssertCommandType(input, ClearCommand.class);
+        }
     }
 
     @Test
     public void parse_listCommand_parsedCorrectly() {
-        final String input = "list";
+        final String input = "List";
         parseAndAssertCommandType(input, ListCommand.class);
     }
 
     @Test
     public void parse_exitCommand_parsedCorrectly() {
-        final String input = "exit";
+        final String input = "Exit";
         parseAndAssertCommandType(input, ExitCommand.class);
     }
 
+
     /*
-     * Tests for ingle index argument commands ===============================================================
+     * Tests for single index argument commands ===============================================================
      */
 
     @Test
     public void parse_deleteCommandNoArgs_errorMessage() {
-        final String[] inputs = { "delete", "delete " };
+        final String[] inputs = { "delete", "delete ", "Delete" };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -116,7 +123,7 @@ public class ParserTest {
 
     @Test
     public void viewCommandNoArgs_errorMessage() {
-        final String[] inputs = { "view", "view " };
+        final String[] inputs = { "view", "view "};
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -146,7 +153,7 @@ public class ParserTest {
 
     @Test
     public void parse_viewAllCommandArgsIsNotSingleNumber_errorMessage() {
-        final String[] inputs = { "viewall notAnumber ", "viewall 8*wh12", "viewall 1 2 3 4 5" };
+        final String[] inputs = { "viewall notAnumber ", "ViewalL 8*wh12", "VIEWALL 1 2 3 4 5" };
         final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -168,7 +175,9 @@ public class ParserTest {
         // no keywords
         final String[] inputs = {
             "find",
-            "find "
+            "find ",
+            "FIND",
+            "Find "
         };
         final String resultMessage =
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
@@ -180,7 +189,7 @@ public class ParserTest {
         final String[] keywords = { "key1", "key2", "key3" };
         final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
 
-        final String input = "find " + String.join(" ", keySet);
+        final String input = "Find " + String.join(" ", keySet);
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
         assertEquals(keySet, result.getKeywords());
@@ -208,6 +217,7 @@ public class ParserTest {
             "add",
             "add ",
             "add wrong args format",
+            "ADD",
             // no phone prefix
             String.format("add $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
             // no email prefix
@@ -284,7 +294,7 @@ public class ParserTest {
     }
 
     private static String convertPersonToAddCommandString(ReadOnlyPerson person) {
-        String addCommand = "add "
+        String addCommand = "ADD "
                 + person.getName().fullName
                 + (person.getPhone().isPrivate() ? " pp/" : " p/") + person.getPhone().value
                 + (person.getEmail().isPrivate() ? " pe/" : " e/") + person.getEmail().value
