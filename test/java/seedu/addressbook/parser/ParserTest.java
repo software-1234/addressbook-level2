@@ -68,7 +68,6 @@ public class ParserTest {
     public void parse_helpCommand_parsedCorrectly() {
         final String[] inputs = {"help", "Help","HELP", "HelP"} ;
         for(String input : inputs){
-            System.out.println(input);
             parseAndAssertCommandType(input, HelpCommand.class);
         }
 
