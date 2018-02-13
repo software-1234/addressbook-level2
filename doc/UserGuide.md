@@ -31,9 +31,15 @@ What's different from AddressBook-Level1:
 ### Commands are not case sensitive thus `add` and `Add` will both work to add a new person.
 
 ### Viewing help : `help`
-Format: `help`
-
-> Help is also shown if you enter an incorrect command e.g. `abcd`
+Format: `help COMMAND`
+> If you want to see all the commands available and how to use them, you may use `help all`
+>
+> You may also be more specific on what command you what help on such as `help add`. Furthermore, typing help alone will show
+> the available options for help. If you enter an invalid command or an command with no help entry, all valid commands will be displayed.
+>
+> Examples:
+> `help add`
+> `help view all`
  
 ### Adding a person: `add`
 Adds a person to the address book<br>
