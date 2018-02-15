@@ -66,7 +66,7 @@ public class HelpCommand extends Command {
                 );
             default:
                 return new CommandResult(
-                        "You have entered an invalid command or invalid help command. These are the valid commands:" + "\n" + "add, delete, " +
+                        "You have entered an invalid command or invalid help command. These are the valid commands:" + " add, delete, " +
                                 "clear, find, list, view, view all, help, exit."
                 );
 
