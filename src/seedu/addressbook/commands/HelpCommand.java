@@ -72,5 +72,10 @@ public class HelpCommand extends Command {
 
         }
 
+
     }
+    public boolean isMutating(){
+        return false;
+    }
+
 }

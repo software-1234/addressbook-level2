@@ -11,7 +11,7 @@ import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
 /**
  * Represents an executable command.
  */
-public class Command {
+public abstract class Command {
     protected AddressBook addressBook;
     protected List<? extends ReadOnlyPerson> relevantPersons;
     private int targetIndex = -1;
@@ -67,4 +67,6 @@ public class Command {
     public void setTargetIndex(int targetIndex) {
         this.targetIndex = targetIndex;
     }
+
+    public abstract boolean isMutating();
 }
